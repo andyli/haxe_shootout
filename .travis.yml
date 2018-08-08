@@ -13,13 +13,26 @@ haxe:
 neko: "2.2.0"
 
 install:
+  - haxelib git hxnodejs https://github.com/HaxeFoundation/hxnodejs.git
   - haxelib list
 
 script:
   - haxe --cwd binarytrees -main BinaryTrees -neko binarytrees.n
+  - haxe --cwd binarytrees -main BinaryTrees -lib hxnodejs -js binarytrees.js
+
   - haxe --cwd fasta -main Fasta -neko fasta.n
+  - haxe --cwd fasta -main Fasta -lib hxnodejs -js fasta.js
+
   - haxe --cwd nbodies -main NBody -neko nbody.n
+  - haxe --cwd nbodies -main NBody -lib hxnodejs -js nbody.js
+
   - haxe --cwd regexdna -main RegexDna.hx -neko regexdna.n
+  - haxe --cwd regexdna -main RegexDna.hx -lib hxnodejs -js regexdna.js
+
   - haxe --cwd revcomp -main ReverseCompliment.hx -neko revcomp.n
+  - haxe --cwd revcomp -main ReverseCompliment.hx -lib hxnodejs -js revcomp.js
+
   - haxe --cwd spectral -main SpectralNorm.hx -neko spectralnorm.n
+  - haxe --cwd spectral -main SpectralNorm.hx -lib hxnodejs -js spectralnorm.js
+
   - haxe --cwd threadring -main ThreadRing.hx -neko threadring.n
