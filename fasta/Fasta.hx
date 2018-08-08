@@ -37,13 +37,13 @@ class Fasta
 
   public function run(nn)
   {
-    neko.Lib.println('>ONE Homo sapiens alu');
+    Sys.println('>ONE Homo sapiens alu');
     repeatFasta(aluChar, nn*2);
 
-    neko.Lib.println('>TWO IUB ambiguity codes');
+    Sys.println('>TWO IUB ambiguity codes');
     randomFasta(iubChar, iubProb, nn*3);
 
-    neko.Lib.println('>THREE Homo sapiens frequency');
+    Sys.println('>THREE Homo sapiens frequency');
     randomFasta(homosapiensChar, homosapiensProb, nn*5);
   }
 
@@ -56,11 +56,11 @@ class Fasta
     for( jj in 0...Std.int(nn/width) )
     {
       ii = (jj*width) % rr;
-      neko.Lib.println(ss.substr(ii, width));
+      Sys.println(ss.substr(ii, width));
     }
 
     if( (nn%width) != 0 )
-      neko.Lib.println(ss.substr(-(nn%width)));
+      Sys.println(ss.substr(-(nn%width)));
   }
 
   public function randomFasta(tableChar, tableProb, nn)
@@ -73,12 +73,12 @@ class Fasta
       buf.add(tableChar.charAt(bisect(probList, genRandom())));
       if( (ii+1)%width == 0 )
       {
-	neko.Lib.println(buf.toString());
-	buf = new StringBuf();
+        Sys.println(buf.toString());
+        buf = new StringBuf();
       }
     }
     if( nn%width != 0 )
-      neko.Lib.println(buf.toString());
+      Sys.println(buf.toString());
   }
 
   private function genRandom()
@@ -121,7 +121,7 @@ class Fasta
 
   public static function main()
   {
-    var nn = Std.parseInt(neko.Sys.args()[0]);
+    var nn = Std.parseInt(Sys.args()[0]);
     var fasta = new Fasta();
     fasta.run(nn);
   }

@@ -4,20 +4,14 @@
 
   contributed by Ian Martins
 */
-import neko.io.File;
+import sys.io.*;
 
 class RegexDna
 {
   public static function main()
   {
-    // get input length
-    var fin = neko.io.File.stdin();
-    fin.seek(0, FileSeek.SeekEnd);
-    var len = fin.tell();
-
-    // read input
-    fin.seek(0, FileSeek.SeekBegin);
-    var seq = fin.readAll(len).toString();
+    var fin = Sys.stdin();
+    var seq = fin.readAll().toString();
     var ilen = seq.length;
 
     // remove newlines and comments
@@ -36,24 +30,24 @@ class RegexDna
 		    'agggtaa[cgt]|[acg]ttaccct'];
 
     for( vv in variants )
-      neko.Lib.println(vv + ' ' + countMatches(vv, seq));
+      Sys.println(vv + ' ' + countMatches(vv, seq));
 
     var subst = [['B', '(c|g|t)'],
-		 ['D', '(a|g|t)'],
-		 ['H', '(a|c|t)'],
-		 ['K', '(g|t)'],
-		 ['M', '(a|c)'],
-		 ['N', '(a|c|g|t)'],
-		 ['R', '(a|g)'],
-		 ['S', '(c|g)'],
-		 ['V', '(a|c|g)'],
-		 ['W', '(a|t)'],
-		 ['Y', '(c|t)']];
+                ['D', '(a|g|t)'],
+                ['H', '(a|c|t)'],
+                ['K', '(g|t)'],
+                ['M', '(a|c)'],
+                ['N', '(a|c|g|t)'],
+                ['R', '(a|g)'],
+                ['S', '(c|g)'],
+                ['V', '(a|c|g)'],
+                ['W', '(a|t)'],
+                ['Y', '(c|t)']];
 
     for( ii in subst )
       seq = new EReg(ii[0], 'g').replace(seq, ii[1]);
 
-    neko.Lib.println('\n' + ilen + '\n' + clen + '\n' + seq.length);
+    Sys.println('\n' + ilen + '\n' + clen + '\n' + seq.length);
   }
 
   private static function countMatches(regexStr, str)

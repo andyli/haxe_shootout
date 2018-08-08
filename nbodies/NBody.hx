@@ -151,11 +151,11 @@ class NBody
 
         var n = Std.parseInt(Sys.args()[0]);
         offsetMomentum(bodies);
-        neko.Lib.println(round(energy(bodies)));
+        Sys.println(round(energy(bodies)));
         scaleBodies(bodies, DT);
         for( i in 0...n )
             advance(bodies);
         scaleBodies(bodies, RECIP_DT);
-        neko.Lib.println(round(energy(bodies)));
+        Sys.println(round(energy(bodies)));
     }
 }

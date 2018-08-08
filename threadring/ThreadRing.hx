@@ -23,7 +23,7 @@ class ThreadRing
     for( tt in 0...nThreads )
       threads[tt].sendMessage(threads[(tt+1)%nThreads]);
 
-    var numPasses = Std.parseInt(neko.Sys.args()[0]);
+    var numPasses = Std.parseInt(Sys.args()[0]);
     threads[0].sendMessage(numPasses);
 
     Thread.readMessage(true);
@@ -39,11 +39,11 @@ class ThreadRing
     {
       var val : Int = Thread.readMessage(true);
       if( val>0 )
-	next.sendMessage(val-1);
+        next.sendMessage(val-1);
       else
       {
-	neko.Lib.println(num);
-	main.sendMessage('done');
+        Sys.println(num);
+        main.sendMessage('done');
       }
     }
   }

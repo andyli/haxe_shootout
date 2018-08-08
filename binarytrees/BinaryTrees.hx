@@ -4,9 +4,6 @@
    contributed by Ian Martins
 */
 
-import neko.Sys;
-import neko.Lib;
-
 class BinaryTrees
 {
   inline private static var minDepth = 4;
@@ -19,7 +16,7 @@ class BinaryTrees
     var stretchDepth = maxDepth + 1;
 
     var check = TreeNode.bottomUpTree(0, stretchDepth).itemCheck();
-    Lib.println("stretch tree of depth "+stretchDepth+"\t check: " + check);
+    Sys.println("stretch tree of depth "+stretchDepth+"\t check: " + check);
 
     var longLivedTree = TreeNode.bottomUpTree(0, maxDepth);
 
@@ -31,14 +28,14 @@ class BinaryTrees
 
       for( ii in 1...iterations+1 )
       {
-	check += TreeNode.bottomUpTree(ii, depth).itemCheck();
-	check += TreeNode.bottomUpTree(-ii, depth).itemCheck();
+        check += TreeNode.bottomUpTree(ii, depth).itemCheck();
+        check += TreeNode.bottomUpTree(-ii, depth).itemCheck();
       }
-      Lib.println((iterations*2) + "\t trees of depth " + depth + "\t check: " + check);
+      Sys.println((iterations*2) + "\t trees of depth " + depth + "\t check: " + check);
       
       depth += 2;
     }
-    Lib.println("long lived tree of depth " + maxDepth + "\t check: "+ longLivedTree.itemCheck());
+    Sys.println("long lived tree of depth " + maxDepth + "\t check: "+ longLivedTree.itemCheck());
   }
 }
 

@@ -6,35 +6,34 @@
 */
 class ReverseCompliment
 {
-  private static var table : Hash<String>;
+  private static var table : Map<String, String>;
 
   public static function main()
   {
     var keys = 'ACBDGHKMNSRUTWVYacbdghkmnsrutwvy';
     var vals = 'TGVHCDMKNSYAAWBRTGVHCDMKNSYAAWBR';
-    table = new Hash<String>();
+    table = new Map();
     for( ii in 0...keys.length )
       table.set(keys.charAt(ii), vals.charAt(ii));
 
     var seq = new List<String>();
-    var fin = neko.io.File.stdin();
+    var fin = Sys.stdin();
     try
     {
       var line;
       while( true )
       {
-	line = fin.readLine();
-	if( line.charAt(0) == '>' )
-	{
-	  show(seq);
-	  neko.Lib.println(line);
-	  seq.clear();
-	}
-	else
-	  seq.add(line);
+        line = fin.readLine();
+        if( line.charAt(0) == '>' )
+        {
+          show(seq);
+          Sys.println(line);
+          seq.clear();
+        }
+        else
+          seq.add(line);
       }
-    }
-    catch ( ex:haxe.io.Eof ) {}
+    } catch ( ex:haxe.io.Eof ) {}
     show(seq);
   }
 
@@ -50,11 +49,11 @@ class ReverseCompliment
       jj++; ii--;
       if( jj%60 == 0 )
       {
-	neko.Lib.println(buf.toString());
-	buf = new StringBuf();
+        Sys.println(buf.toString());
+        buf = new StringBuf();
       }
     }
     if( str.length%60 != 0 )
-      neko.Lib.println(buf.toString());
+      Sys.println(buf.toString());
   }
 }

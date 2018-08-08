@@ -4,7 +4,6 @@
  *
  * Contributed by Ian Martins
  */
-import neko.Lib;
 
 class SpectralNorm
 {
@@ -62,6 +61,6 @@ class SpectralNorm
             vBv += u[i]*v[i];
             vv += v[i]*v[i];
         }
-        Lib.println(Std.string(Math.sqrt(vBv/vv)).substring(0,11) + "\n");
+        Sys.println(Std.string(Math.sqrt(vBv/vv)).substring(0,11) + "\n");
     }
 }

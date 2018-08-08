@@ -1,0 +1,25 @@
+language: haxe
+
+os:
+  - linux
+  - osx
+
+dist: trusty
+
+haxe:
+  - "3.4.7"
+  - development
+
+neko: "2.2.0"
+
+install:
+  - haxelib list
+
+script:
+  - haxe --cwd binarytrees -main BinaryTrees -neko binarytrees.n
+  - haxe --cwd fasta -main Fasta -neko fasta.n
+  - haxe --cwd nbodies -main NBody -neko nbody.n
+  - haxe --cwd regexdna -main RegexDna.hx -neko regexdna.n
+  - haxe --cwd revcomp -main ReverseCompliment.hx -neko revcomp.n
+  - haxe --cwd spectral -main SpectralNorm.hx -neko spectralnorm.n
+  - haxe --cwd threadring -main ThreadRing.hx -neko threadring.n
