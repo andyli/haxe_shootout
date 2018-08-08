@@ -112,9 +112,9 @@ class Fasta
     while( iter.hasNext() )
     {
       if( item < iter.next() )
-	return ret;
+        return ret;
       else
-	ret++;
+        ret++;
     }
     return -1;
   }
